@@ -1,0 +1,17 @@
+name: Utilities
+description: 各种有用的指令。
+main: top.shjibi.utilities.Main
+version: 1.0.0
+api-version: 1.19
+
+
+commands:
+  suicide:
+    description: 自杀
+  showoff:
+    description: 炫耀你的好东西
+    aliases: show
+  progress:
+    description: 查看你成就的完成情况
+    aliases: prg
+
