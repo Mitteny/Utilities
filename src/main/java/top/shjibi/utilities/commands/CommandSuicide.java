@@ -2,25 +2,20 @@ package top.shjibi.utilities.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
-import top.shjibi.utilities.Main;
-import top.shjibi.utilities.base.PlayerCommandHandler;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
+import top.shjibi.plugineer.command.base.CommandInfo;
+import top.shjibi.plugineer.command.base.PlayerCommand;
 
-import java.util.Collections;
-import java.util.List;
+@CommandInfo(name = "suicide")
+public class CommandSuicide extends PlayerCommand {
 
-public class CommandSuicide extends PlayerCommandHandler {
-
-    public CommandSuicide() {
-        super(Main.getInstance(), "suicide", 0, null);
+    public CommandSuicide(JavaPlugin plugin) {
+        super(plugin);
     }
 
     @Override
-    protected void execute(Player sender, Command command, String label, String[] args) {
+    public void execute(@NotNull Player sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         sender.setHealth(0);
-    }
-
-    @Override
-    public List<String> completeTab(Player sender, Command command, String label, String[] args) {
-        return Collections.emptyList();
     }
 }

@@ -1,7 +1,7 @@
 name: Utilities
 description: 各种有用的指令。
 main: top.shjibi.utilities.Main
-version: 1.0.0
+version: 1.0.1
 api-version: 1.19
 
 

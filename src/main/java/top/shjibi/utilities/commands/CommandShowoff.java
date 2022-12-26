@@ -3,23 +3,23 @@ package top.shjibi.utilities.commands;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import top.shjibi.utilities.Main;
-import top.shjibi.utilities.base.PlayerCommandHandler;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
+import top.shjibi.plugineer.command.base.CommandInfo;
+import top.shjibi.plugineer.command.base.PlayerCommand;
 
-import java.util.Collections;
-import java.util.List;
+import static top.shjibi.plugineer.util.StringUtil.color;
+import static top.shjibi.utilities.util.ItemUtil.broadcastItemInfo;
 
-import static top.shjibi.utilities.util.NMSUtil.broadcastItemInfo;
-import static top.shjibi.utilities.util.StringUtil.color;
+@CommandInfo(name = "showoff")
+public final class CommandShowoff extends PlayerCommand {
 
-public final class CommandShowoff extends PlayerCommandHandler {
-
-    public CommandShowoff() {
-        super(Main.getInstance(), "showoff", 0, null);
+    public CommandShowoff(JavaPlugin plugin) {
+        super(plugin);
     }
 
     @Override
-    protected void execute(Player p, Command command, String label, String[] args) {
+    public void execute(@NotNull Player p, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         ItemStack item = p.getInventory().getItemInMainHand();
 
         if (item.getType().isAir()) {
@@ -29,10 +29,5 @@ public final class CommandShowoff extends PlayerCommandHandler {
 
         int amount = item.getAmount();
         broadcastItemInfo(p, color("&6" + p.getName() + "&a展示了他的 "), item, amount > 1 ? " x" + amount : "");
-    }
-
-    @Override
-    public List<String> completeTab(Player sender, Command command, String label, String[] args) {
-        return Collections.emptyList();
     }
 }
