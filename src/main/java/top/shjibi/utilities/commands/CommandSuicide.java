@@ -8,7 +8,7 @@ import top.shjibi.plugineer.command.base.CommandInfo;
 import top.shjibi.plugineer.command.base.PlayerCommand;
 
 @CommandInfo(name = "suicide")
-public class CommandSuicide extends PlayerCommand {
+public final class CommandSuicide extends PlayerCommand {
 
     public CommandSuicide(JavaPlugin plugin) {
         super(plugin);

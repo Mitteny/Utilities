@@ -5,7 +5,7 @@ import top.shjibi.plugineer.command.CommandManager;
 import top.shjibi.utilities.commands.CommandShowoff;
 import top.shjibi.utilities.commands.CommandSuicide;
 
-public class Main extends JavaPlugin {
+public final class Main extends JavaPlugin {
 
     /**
      * 唯一的实例
