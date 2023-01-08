@@ -1,5 +1,6 @@
 package top.shjibi.utilities.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -20,6 +21,7 @@ public final class CommandShowoff extends PlayerCommand {
 
     @Override
     public void execute(@NotNull Player p, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
         ItemStack item = p.getInventory().getItemInMainHand();
 
         if (item.getType().isAir()) {
@@ -28,6 +30,21 @@ public final class CommandShowoff extends PlayerCommand {
         }
 
         int amount = item.getAmount();
-        broadcastItemInfo(p, color("&6" + p.getName() + "&a展示了他的 "), item, amount > 1 ? " x" + amount : "");
+
+        if (args.length >= 1 ) {
+            Player target = Bukkit.getPlayerExact(args[0]);
+            if (target == null) {
+                p.sendMessage(color("&c该玩家不存在"));
+            } else {
+                broadcastItemInfo(target, color("&6" + p.getName() + "&a向你展示了他的 "), item, amount > 1 ? " x " + amount : "");
+                p.sendMessage(color("&a已向&6" + target.getName() + "&a展示你手上的物品"));
+            }
+        } else {
+            for (Player pl : Bukkit.getOnlinePlayers()) {
+                broadcastItemInfo(pl, color("&6" + p.getName() + "&a向全服展示了他的 "), item, amount > 1 ? " x " + amount : "");
+            }
+        }
+
+
     }
 }
